@@ -64,7 +64,8 @@ class CameraNode(object):
                            '~exposure_mode': None}
         self.parametersChanged = True
         self.updateParameters()
-        self.updateParametersTimer = rospy.Timer(period=1.0, callback=self.updateParameters(), oneshot=False)
+        self.updateParametersTimer = rospy.Timer(rospy.Duration(1.0),
+                                                 self.updateParameters_)
 
         # self.framerate_high = self.setupParam("~framerate_high", 30.0)
         # self.framerate_low = self.setupParam("~framerate_low", 15.0)
@@ -201,6 +202,11 @@ class CameraNode(object):
     #     rospy.set_param(param_name, value)
     #     rospy.loginfo("[%s] %s = %s " % (self.node_name, param_name, value))
     #     return value
+
+    def updateParameters(self, event):
+        """Callback for polling."""
+
+        self.updateParameters()
 
     def updateParameters(self):
         """Keeping the node parameters up to date with the parameter server.
