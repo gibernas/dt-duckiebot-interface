@@ -203,7 +203,7 @@ class CameraNode(object):
     #     rospy.loginfo("[%s] %s = %s " % (self.node_name, param_name, value))
     #     return value
 
-    def updateParameters(self, event):
+    def updateParameters_(self, event):
         """Callback for polling."""
 
         self.updateParameters()
