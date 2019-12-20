@@ -120,6 +120,7 @@ class LEDEmitterNode(DTROS):
 
         # Initialize LEDs to be off
         self.pattern = [[0, 0, 0]]*5
+        self.frequency_mask = [0, 0, 0, 0, 0]
         self.current_pattern_name = 'LIGHT_OFF'
         self.changePattern(self.current_pattern_name)
 
